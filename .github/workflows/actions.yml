@@ -1,0 +1,30 @@
+name: My Sample Workflow
+
+on:
+  workflow_dispatch:  # Trigger manually from the GitHub Actions tab
+  # You can still include other events like 'push' or 'pull_request' if you want
+  # push:
+  #   branches:
+  #     - main
+  # pull_request:
+  #   branches:
+  #     - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu virtual environment
+    
+    steps:
+      # Step 1: Checkout code from repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js (even if you're not using Node.js framework)
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Use Node.js 16
+
+      # Step 3: Run your JavaScript file using Node.js
+      - name: Run JavaScript file
+        run: node samplerun.js  # This will run your index.js file
